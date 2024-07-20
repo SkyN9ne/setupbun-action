@@ -1,8 +1,9 @@
-# setup-bun
+# Setup `bun` with GitHub Actions 
+-----------------------------------
 
-Download, install, and setup [Bun](https://bun.sh) in GitHub Actions.
+#### Download, install, and setup [`bun`](https://bun.sh) in GitHub Actions with a YAML workflow
 
-## Usage
+## Usage:
 
 ```yaml
 - uses: oven-sh/setup-bun@v2
@@ -18,7 +19,7 @@ Download, install, and setup [Bun](https://bun.sh) in GitHub Actions.
     bun-version-file: ".bun-version"
 ```
 
-### Using a custom NPM registry
+## Using a custom NPM registry URL:
 
 ```yaml
 - uses: oven-sh/setup-bun@v2
@@ -27,7 +28,7 @@ Download, install, and setup [Bun](https://bun.sh) in GitHub Actions.
     scope: "@foo"
 ```
 
-If you need to authenticate with a private registry, you can set the `BUN_AUTH_TOKEN` environment variable.
+* If you need to authenticate with a private registry, you can set the `BUN_AUTH_TOKEN` environment variable.
 
 ```yaml
 - name: Install Dependencies
@@ -36,7 +37,7 @@ If you need to authenticate with a private registry, you can set the `BUN_AUTH_T
   run: bun install --frozen-lockfile
 ```
 
-### Override download url
+## Override download URL
 
 If you need to override the download URL, you can use the `bun-download-url` input.
 
@@ -46,9 +47,9 @@ If you need to override the download URL, you can use the `bun-download-url` inp
     bun-download-url: "https://github.com/oven-sh/bun/releases/latest/download/bun-linux-x64.zip"
 ```
 
-### Node.js not needed
+### Node.Js not needed
 
-In most cases, you shouldn't need to use the [setup-node](https://github.com/actions/setup-node) GitHub Action.
+In *most* cases, you shouldn't need to use the [`setup-node`](https://github.com/actions/setup-node) GitHub Action.
 
 ## Inputs
 
@@ -56,9 +57,11 @@ In most cases, you shouldn't need to use the [setup-node](https://github.com/act
 | ------------------ | ----------------------------------------------------- | ----------- | ------------------------------------------------ |
 | `bun-version`      | The version of Bun to download and install.           | `latest`    | `canary`, `1.0.0`, `1.0.x`                       |
 | `bun-version-file` | The version of Bun to download and install from file. | `undefined` | `package.json`, `.bun-version`, `.tool-versions` |
-| `bun-download-url` | URL to download .zip file for Bun release             |             |                                                  |
+| `bun-download-url` | URL to download `.zip file for Bun release             |             |                                                  |
 | `registry-url`     | Registry URL where some private package is stored.    | `undefined` | `"https://npm.pkg.github.com/"`                  |
 | `scope`            | Scope for private packages.                           | `undefined` | `"@foo"`, `"@orgname"`                           |
+
+
 
 ## Outputs
 
@@ -67,5 +70,5 @@ In most cases, you shouldn't need to use the [setup-node](https://github.com/act
 | `bun-version`      | The output from `bun --version`.           | `1.0.0`                                                            |
 | `bun-revision`     | The output from `bun --revision`.          | `1.0.0+822a00c4`                                                   |
 | `bun-path`         | The path to the Bun executable.            | `/path/to/bun`                                                     |
-| `bun-download-url` | The URL from which Bun was downloaded.     | `https://bun.sh/download/latest/linux/x64?avx2=true&profile=false` |
-| `cache-hit`        | If the Bun executable was read from cache. | `true`                                                             |
+| `bun-download-url` | The URL from which Bun was downloaded.     | <`https://bun.sh/download/latest/linux/x64?avx2=true&profile=false`> |
+| `cache-hit`        | Whether the Bun executable was read from cache. | `true` or `false''                                                           `
